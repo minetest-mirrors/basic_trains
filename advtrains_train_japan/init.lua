@@ -3,9 +3,33 @@ local S = attrans
 -- note: scharfenberg coupler is defined in advtrains core
 advtrains.register_coupler_type("train_japan_interwagon", attrans("Japanese Train Inter-Wagon Connection"))
 
+local function set_livery(self, puncher, itemstack, data)
+	local meta = itemstack:get_meta()
+	local color = meta:get_string("paint_color")
+	if color and color:find("^#%x%x%x%x%x%x$") then
+		local alpha = tonumber(meta:get_string("alpha"))
+		if alpha == 0 then
+			data.livery = self.base_texture
+		else
+			data.livery = self.base_texture.."^("..self.base_livery.."^[colorize:"..color..":255)"
+		end
+		self:set_textures(data)
+	end
+end
+
+local function set_textures(self, data)
+	if data.livery then
+		self.object:set_properties({textures={data.livery}})
+	end
+end
+
 advtrains.register_wagon("engine_japan", {
 	mesh="advtrains_engine_japan.b3d",
 	textures = {"advtrains_engine_japan.png"},
+	base_texture = "advtrains_engine_japan.png",
+	base_livery = "advtrains_engine_japan_livery.png",
+	set_textures = set_textures,
+	set_livery = set_livery,
 	drives_on={default=true},
 	max_speed=20,
 	seats = {
@@ -79,6 +103,10 @@ advtrains.register_wagon("engine_japan", {
 advtrains.register_wagon("wagon_japan", {
 	mesh="advtrains_wagon_japan.b3d",
 	textures = {"advtrains_wagon_japan.png"},
+	base_texture = "advtrains_wagon_japan.png",
+	base_livery = "advtrains_wagon_japan_livery.png",
+	set_textures = set_textures,
+	set_livery = set_livery,
 	drives_on={default=true},
 	max_speed=20,
 	seats = {
