@@ -94,6 +94,7 @@ advtrains.register_wagon("wagon_tank", {
 	inventory_list_sizes = {
 		box=8*3,
 	},
+	techage_liquid_capacity = 1000,
 }, S("Industrial tank wagon"), "advtrains_wagon_tank_inv.png")
 advtrains.register_wagon("wagon_wood", {
 	mesh="advtrains_wagon_wood.b3d",
