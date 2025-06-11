@@ -1,4 +1,4 @@
-local S = attrans
+local S = core.get_translator("advtrains_train_steam")
 
 -- length of the steam engine loop sound
 local SND_LOOP_LEN = 5

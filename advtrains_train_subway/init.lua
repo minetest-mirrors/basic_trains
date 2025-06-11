@@ -1,4 +1,4 @@
-local S = attrans
+local S = core.get_translator("advtrains_train_subway")
 
 advtrains.register_wagon("subway_wagon", {
 	mesh="advtrains_subway_wagon.b3d",

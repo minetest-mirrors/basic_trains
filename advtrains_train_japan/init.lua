@@ -1,7 +1,7 @@
-local S = attrans
+local S = core.get_translator("advtrains_train_japan")
 
 -- note: scharfenberg coupler is defined in advtrains core
-advtrains.register_coupler_type("train_japan_interwagon", attrans("Japanese Train Inter-Wagon Connection"))
+advtrains.register_coupler_type("train_japan_interwagon", S("Japanese Train Inter-Wagon Connection"))
 
 local function set_livery(self, puncher, itemstack, data)
 	local meta = itemstack:get_meta()
